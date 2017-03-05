@@ -81,35 +81,26 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
+
 alias zshconfig="vim ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-fpath=(/usr/local/share/zsh-completions $fpath)
-
-
-export NVM_DIR="/Users/hongqinghua/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 # git shortcut
 alias gsl="git stash && git pull --rebase"
 alias gps="git push && git stash pop"
 alias gsc="git stash && git checkout"
 
+
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+
 # golang
 export GOPATH=${HOME}/.go_workspace
 export PATH=${PATH}:${GOPATH}/bin
 
+
 # python
 export PYTHONDONTWRITEBYTECODE=1 # disabling bytecode(.pyc) files
-
-# alias for cnpm
-alias cnpm="npm --registry=https://registry.npm.taobao.org \
-  --cache=$HOME/.npm/.cache/cnpm \
-  --disturl=https://npm.taobao.org/dist \
-  --userconfig=$HOME/.cnpmrc"
