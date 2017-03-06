@@ -5,50 +5,50 @@ set -e
 cd "$(dirname "${BASH_SOURCE}")";
 
 function install_dotfiles() {
-	echo "Updating .dotfiles in `pwd` ...";
-	git pull origin master;
+    echo "Updating .dotfiles in `pwd` ...";
+    git pull origin master;
 }
 
 function install_vimrc() {
-	if ! (cd ~/.vim_runtime && \
-	      echo "Updating .vimrc in `pwd` ..." && \
-		  git pull --rebase) then
-		echo "Installing .vimrc ...";
-		git clone https://github.com/amix/vimrc.git ~/.vim_runtime;
-		sh ~/.vim_runtime/install_awesome_vimrc.sh;
-	fi;
+    if ! (cd ~/.vim_runtime && \
+          echo "Updating .vimrc in `pwd` ..." && \
+          git pull --rebase) then
+        echo "Installing .vimrc ...";
+        git clone https://github.com/amix/vimrc.git ~/.vim_runtime;
+        sh ~/.vim_runtime/install_awesome_vimrc.sh;
+    fi;
 }
 
 function pre_installs() {
-	installs=( install_dotfiles install_vimrc )
-	for install in "${installs[@]}" 
-	do
-		echo "";
-		`expr $install`;
-	done
-	echo ""
+    installs=( install_dotfiles install_vimrc )
+    for install in "${installs[@]}" 
+    do
+        echo "";
+        `expr $install`;
+    done
+    echo ""
 }
 
 function bootstrap() {
-	pre_installs;
+    pre_installs;
 
-	echo "Bootstraping ...";
+    echo "Bootstraping ...";
 
-	rsync --exclude ".git/" \
-		--exclude ".DS_Store" \
-		--exclude "bootstrap.sh" \
-		--exclude "README.md" \
-		--exclude "LICENSE" \
-		-avhR --no-perms . ~;
+    rsync --exclude ".git/" \
+        --exclude ".DS_Store" \
+        --exclude "bootstrap.sh" \
+        --exclude "README.md" \
+        --exclude "LICENSE" \
+        -avhR --no-perms . ~;
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
-	bootstrap;
+    bootstrap;
 else
-	read -p "This may overwrites existing files in your home directory. Are you sure? (y/n) " -n 1;
-	echo "";
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		bootstrap;
-	fi;
+    read -p "This may overwrites existing files in your home directory. Are you sure? (y/n) " -n 1;
+    echo "";
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        bootstrap;
+    fi;
 fi;
 unset bootstrap;
