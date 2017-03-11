@@ -94,8 +94,9 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-
+if [[ `uname` == 'Darwin' ]]; then
+    [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+fi
 
 # golang
 export GOPATH=${HOME}/.go_workspace
