@@ -42,7 +42,7 @@ function bootstrap() {
         -avhR --no-perms . ~;
 }
 
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
+if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
     bootstrap;
 else
     read -p "This may overwrites existing files in your home directory. Are you sure? (y/n) " -n 1;
@@ -52,3 +52,4 @@ else
     fi;
 fi;
 unset bootstrap;
+
