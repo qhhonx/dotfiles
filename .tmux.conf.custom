@@ -10,3 +10,8 @@ bind M set -g mouse off
 bind | split-window -h
 bind - split-window -v
 
+# Resize pane
+bind -r C-k resizep -U 10
+bind -r C-j resizep -D 10
+bind -r C-h resizep -L 10
+bind -r C-l resizep -R 10

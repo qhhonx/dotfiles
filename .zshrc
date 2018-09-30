@@ -52,7 +52,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo pod gem go brew composer rails pip virtualenvwrapper carthage z npm carthage bash zsh-autosuggestions)
+plugins=(git sudo pod gem go brew composer rails pip virtualenvwrapper carthage z npm carthage bash zsh-autosuggestions arcanist)
 
 # User configuration
 
@@ -105,3 +105,7 @@ export PATH=${PATH}:${GOPATH}/bin
 
 # python
 export PYTHONDONTWRITEBYTECODE=1 # disabling bytecode(.pyc) files
+
+# rust/cargo
+export PATH=$HOME/.cargo/bin:$PATH
+
