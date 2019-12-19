@@ -7,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="random"
 # ZSH_THEME="nicoulaj"
-ZSH_THEME="pure"
+ZSH_THEME="refined"
 # ZSH_THEME="half-life"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -52,7 +52,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo pod gem go brew composer rails pip virtualenvwrapper carthage z npm carthage bash zsh-autosuggestions arcanist)
+plugins=(git sudo pod gem go brew composer pip virtualenvwrapper z npm arcanist xcode cargo swiftpm)
 
 # User configuration
 
@@ -89,11 +89,11 @@ alias gsl="git stash && git pull --rebase"
 alias gps="git push && git stash pop"
 alias gsc="git stash && git checkout"
 
-
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# autojump
 if [[ `uname` == 'Darwin' ]]; then
     [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 fi
@@ -102,10 +102,25 @@ fi
 export GOPATH=${HOME}/.go_workspace
 export PATH=${PATH}:${GOPATH}/bin
 
-
 # python
 export PYTHONDONTWRITEBYTECODE=1 # disabling bytecode(.pyc) files
 
-# rust/cargo
+# rust
 export PATH=$HOME/.cargo/bin:$PATH
 
+# lazygit
+alias lg='lazygit'
+
+# locale 
+export LANG='en_US.UTF-8'
+
+# java
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# android
+export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_SDK_ROOT=${ANDROID_HOME}
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platorm-tools
+
+# opam configuration
+test -r /Users/hongqinghua/.opam/opam-init/init.zsh && . /Users/hongqinghua/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
