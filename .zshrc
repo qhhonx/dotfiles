@@ -123,4 +123,4 @@ export ANDROID_SDK_ROOT=${ANDROID_HOME}
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platorm-tools
 
 # opam configuration
-test -r /Users/hongqinghua/.opam/opam-init/init.zsh && . /Users/hongqinghua/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+test -r ~/.opam/opam-init/init.zsh && . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
