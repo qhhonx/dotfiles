@@ -16,6 +16,13 @@ function install_ohmyzsh() {
     fi;
 }
 
+function install_ohmyfish() {
+    if [ ! -d "${OMF_PATH}" ]; then
+        printf "\nInstalling .oh-my-fish ...\n";
+        curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | sh;
+    fi;
+}
+
 function install_vimrc() {
     if ! (cd ~/.vim_runtime && \
           printf "\nUpdating .vimrc in $(pwd) ...\n" && \
@@ -27,7 +34,7 @@ function install_vimrc() {
 }
 
 function pre_installs() {
-    installs=( install_dotfiles install_ohmyzsh install_vimrc )
+    installs=( install_dotfiles install_ohmyzsh install_ohmyfish install_vimrc )
     for install in "${installs[@]}" 
     do
         $(expr $install);
