@@ -5,41 +5,51 @@ set -e
 cd "$(dirname "${BASH_SOURCE}")";
 
 function install_dotfiles() {
-    echo "Updating .dotfiles in `pwd` ...";
+    printf "\nUpdating .dotfiles in $(pwd) ...\n";
     git pull origin master;
+}
+
+function install_ohmyzsh() {
+    if [ ! -d "${HOME}/.oh-my-zsh" ]; then
+        printf "\nInstalling .oh-my-zsh ...\n";
+        curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh;
+    fi;
 }
 
 function install_vimrc() {
     if ! (cd ~/.vim_runtime && \
-          echo "Updating .vimrc in `pwd` ..." && \
+          printf "\nUpdating .vimrc in $(pwd) ...\n" && \
           git pull --rebase) then
-        echo "Installing .vimrc ...";
+        printf "\nInstalling .vimrc ...\n";
         git clone https://github.com/amix/vimrc.git ~/.vim_runtime;
         sh ~/.vim_runtime/install_awesome_vimrc.sh;
     fi;
 }
 
 function pre_installs() {
-    installs=( install_dotfiles install_vimrc )
+    installs=( install_dotfiles install_ohmyzsh install_vimrc )
     for install in "${installs[@]}" 
     do
-        echo "";
-        `expr $install`;
+        $(expr $install);
     done
-    echo ""
+}
+
+excludes=(".git/" ".DS_Store" "bootstrap.sh" "README.md" "LICENSE");
+
+function sync_dotfiles() {
+    printf "\nSyncing dotfiles ...\n";
+    rsync $(printf "%s\n" "${excludes[@]}" | sed 's/^/--exclude=/g') -avhR --no-perms . ~;
+}
+
+function link_dotfiles() {
+    printf "\nLinking dotfiles ...\n"
+    find . -type f $(printf "*/%s*\n" "${excludes[@]}" | sed 's/^/-not -iwholename /g') -exec ln -vf ~/'{}' '{}' ';';
 }
 
 function bootstrap() {
     pre_installs;
-
-    echo "Bootstraping ...";
-
-    rsync --exclude ".git/" \
-        --exclude ".DS_Store" \
-        --exclude "bootstrap.sh" \
-        --exclude "README.md" \
-        --exclude "LICENSE" \
-        -avhR --no-perms . ~;
+    sync_dotfiles;
+    link_dotfiles;
 }
 
 if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
@@ -52,4 +62,3 @@ else
     fi;
 fi;
 unset bootstrap;
-
