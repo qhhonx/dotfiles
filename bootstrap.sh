@@ -31,7 +31,7 @@ function install_fish() {
 }
 
 function install_ohmyfish() {
-    if [ ! -d "$OMF_PATH" ]; then
+    if [ ! -d ~/.local/share/omf ]; then
         printf "\nInstalling .oh-my-fish ...\n"
         curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | $(which fish)
     fi
