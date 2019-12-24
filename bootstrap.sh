@@ -49,6 +49,13 @@ function install_vimrc() {
 }
 
 function install_tmux() {
+    if ! which tmux >/dev/null; then
+        printf "\nInstalling tmux ...\n"
+        $(which brew) install tmux
+    fi
+}
+
+function install_dottmux() {
     if [ ! -d ~/.tmux ]; then
         printf "\nInstalling .tmux ...\n"
         git clone --depth=1 https://github.com/gpakosz/.tmux.git ~/.tmux
@@ -75,6 +82,7 @@ function pre_installs() {
         install_ohmyfish
         install_vimrc
         install_tmux
+        install_dottmux
         install_autojump
     )
     for install in "${installs[@]}"; do
