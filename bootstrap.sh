@@ -44,7 +44,7 @@ function install_vimrc() {
         sh ~/.vim_runtime/install_awesome_vimrc.sh
     else
         printf "\nUpdating .vimrc ...\n"
-        git -C ~/.vim_runtime pull --rebase --autostash
+        git -C ~/.vim_runtime pull --rebase
     fi
 }
 
@@ -52,12 +52,11 @@ function install_tmux() {
     if [ ! -d ~/.tmux ]; then
         printf "\nInstalling .tmux ...\n"
         git clone --depth=1 https://github.com/gpakosz/.tmux.git ~/.tmux
-        ln -sf ~/.tmux/.tmux.conf ~/.tmux.conf
     else
         printf "\nUpdating .tmux ...\n"
-        git -C ~/.tmux pull --rebase --autostash
-        ln -sf ~/.tmux/.tmux.conf ~/.tmux.conf
+        git -C ~/.tmux pull --rebase
     fi
+    ln -svf ~/.tmux/.tmux.conf ~/.tmux.conf
 }
 
 function pre_installs() {
