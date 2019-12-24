@@ -59,14 +59,23 @@ function install_tmux() {
     ln -svf ~/.tmux/.tmux.conf ~/.tmux.conf
 }
 
+function install_autojump() {
+    if ! which autojump >/dev/null; then
+        printf "\nInstalling autojump ...\n"
+        $(which brew) install autojump
+    fi
+}
+
 function pre_installs() {
     installs=(
         update_dotfiles
+        install_brew
         install_ohmyzsh
         install_fish
         install_ohmyfish
         install_vimrc
         install_tmux
+        install_autojump
     )
     for install in "${installs[@]}"; do
         $(expr $install)
