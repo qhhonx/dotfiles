@@ -73,6 +73,13 @@ function install_autojump() {
     fi
 }
 
+function install_hyper() {
+    if ! which hyper >/dev/null; then
+        printf "\nInstalling hyper ...\n"
+        $(which brew) cask install hyper
+    fi
+}
+
 function pre_installs() {
     installs=(
         update_dotfiles
@@ -84,6 +91,7 @@ function pre_installs() {
         install_tmux
         install_dottmux
         install_autojump
+        install_hyper
     )
     for install in "${installs[@]}"; do
         $(expr $install)
