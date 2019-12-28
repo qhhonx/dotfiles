@@ -4,35 +4,37 @@
 # environment variables. Some entries may override variables
 # set by alacritty itself.
 env:
-# TERM variable
-#
-# This value is used to set the `$TERM` environment variable for
-# each instance of Alacritty. If it is not present, alacritty will
-# check the local terminfo database and use `alacritty` if it is
-# available, otherwise `xterm-256color` is used.
+  # TERM variable
+  #
+  # This value is used to set the `$TERM` environment variable for
+  # each instance of Alacritty. If it is not present, alacritty will
+  # check the local terminfo database and use `alacritty` if it is
+  # available, otherwise `xterm-256color` is used.
   TERM: xterm-256color
 
+  LC_ALL: en_US.UTF-8
+
 window:
-# Window dimensions (changes require restart)
-#
-# Specified in number of columns/lines, not pixels.
-# If both are `0`, this setting is ignored.
+  # Window dimensions (changes require restart)
+  #
+  # Specified in number of columns/lines, not pixels.
+  # If both are `0`, this setting is ignored.
   dimensions:
     columns: 136
     lines: 48
 
-# Window position (changes require restart)
-#
-# Specified in number of pixels.
-# If the position is not set, the window manager will handle the placement.
+  # Window position (changes require restart)
+  #
+  # Specified in number of pixels.
+  # If the position is not set, the window manager will handle the placement.
   position:
     x: 0
     y: 0
 
-# Window padding (changes require restart)
-#
-# Blank space added around the window in pixels. This padding is scaled
-# by DPI and the specified value is always added at both opposing sides.
+  # Window padding (changes require restart)
+  #
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
   padding:
     x: 0
     y: 0
@@ -49,7 +51,7 @@ dynamic_padding: false
 # Values for `decorations` (macOS only):
 #     - transparent: Title bar, transparent background and title bar buttons
 #     - buttonless: Title bar, transparent background, but no title bar buttons
-decorations: transparent
+decorations: buttonless
 
 # Startup Mode (changes require restart)
 #
@@ -60,7 +62,7 @@ decorations: transparent
 #
 # Values for `startup_mode` (macOS only):
 #   - SimpleFullscreen
-startup_mode: Windowed
+startup_mode: SimpleFullscreen
 
 # Window title
 #title: Alacritty
@@ -115,40 +117,40 @@ font:
     style: Light
 
   # Bold font face
-  #bold:
-  # Font family
-  #
-  # If the bold family is not specified, it will fall back to the
-  # value specified for the normal font.
-  #family: monospace
+  bold:
+    # Font family
+    #
+    # If the bold family is not specified, it will fall back to the
+    # value specified for the normal font.
+    family: Inconsolata
 
-  # The `style` can be specified to pick a specific face.
-  #style: Bold
+    # The `style` can be specified to pick a specific face.
+    style: Bold
 
   # Italic font face
-  #italic:
-  # Font family
-  #
-  # If the italic family is not specified, it will fall back to the
-  # value specified for the normal font.
-  #family: monospace
+  italic:
+    # Font family
+    #
+    # If the italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    family: Inconsolata
 
-  # The `style` can be specified to pick a specific face.
-  #style: Italic
+    # The `style` can be specified to pick a specific face.
+    style: Italic
 
   # Bold italic font face
-  #bold_italic:
-  # Font family
-  #
-  # If the bold italic family is not specified, it will fall back to the
-  # value specified for the normal font.
-  #family: monospace
+  bold_italic:
+    # Font family
+    #
+    # If the bold italic family is not specified, it will fall back to the
+    # value specified for the normal font.
+    family: Inconsolata
 
-  # The `style` can be specified to pick a specific face.
-  #style: Bold Italic
+    # The `style` can be specified to pick a specific face.
+    style: Bold Italic
 
   # Point size
-  size: 13.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -182,34 +184,34 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: true
 
-# Colors (One Dark)
+# Colors (Dracula)
 colors:
   # Default colors
   primary:
-    background: '0x1e2127'
-    foreground: '0xabb2bf'
+    background: "0x282a36"
+    foreground: "0xf8f8f2"
 
   # Normal colors
   normal:
-    black:   '0x1e2127'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xabb2bf'
+    black: "0x000000"
+    red: "0xff5555"
+    green: "0x50fa7b"
+    yellow: "0xf1fa8c"
+    blue: "0xcaa9fa"
+    magenta: "0xff79c6"
+    cyan: "0x8be9fd"
+    white: "0xbfbfbf"
 
   # Bright colors
   bright:
-    black:   '0x5c6370'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xffffff'
+    black: "0x282a35"
+    red: "0xff6e67"
+    green: "0x5af78e"
+    yellow: "0xf4f99d"
+    blue: "0xcaa9fa"
+    magenta: "0xff92d0"
+    cyan: "0x9aedfe"
+    white: "0xe6e6e6"
 
 # Visual Bell
 #
@@ -263,7 +265,7 @@ dynamic_title: true
 
 # If this is `true`, the cursor will be rendered as a hollow box when the
 # window is not focused.
-#unfocused_hollow: true
+unfocused_hollow: true
 
 # Live config reload (changes require restart)
 live_config_reload: true
@@ -281,6 +283,9 @@ shell:
   program: /usr/local/bin/fish
   args:
     - --login
+    - -c
+    - /usr/local/bin/tmux
+
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
