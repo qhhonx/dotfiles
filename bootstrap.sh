@@ -73,13 +73,6 @@ function install_autojump() {
     fi
 }
 
-function install_alacritty() {
-    if ! which alacritty >/dev/null && [ ! -d /Applications/Alacritty.app ]; then
-        printf "\nInstalling alacritty ...\n"
-        $(which brew) cask install alacritty
-    fi
-}
-
 function pre_installs() {
     installs=(
         update_dotfiles
@@ -91,7 +84,6 @@ function pre_installs() {
         install_tmux
         install_dottmux
         install_autojump
-        install_alacritty
     )
     for install in "${installs[@]}"; do
         $(expr $install)
