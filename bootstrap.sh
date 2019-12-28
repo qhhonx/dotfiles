@@ -4,10 +4,7 @@ set -e
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-function update_dotfiles() {
-    printf "\nUpdating .dotfiles in $DIR ...\n"
-    git -C "$DIR" pull --rebase --autostash
-}
+# meta
 
 function install_brew() {
     if ! which brew >/dev/null; then
@@ -16,10 +13,16 @@ function install_brew() {
     fi
 }
 
-function install_ohmyzsh() {
-    if [ ! -d ~/.oh-my-zsh ]; then
-        printf "\nInstalling .oh-my-zsh ...\n"
-        curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
+function setup_meta() {
+    install_brew
+}
+
+# terminal & shell
+
+function install_hyper() {
+    if ! which hyper >/dev/null; then
+        printf "\nInstalling hyper ...\n"
+        $(which brew) cask install hyper
     fi
 }
 
@@ -27,6 +30,28 @@ function install_fish() {
     if ! which fish >/dev/null; then
         printf "\nInstalling fish ...\n"
         $(which brew) install fish
+    fi
+}
+
+function install_tmux() {
+    if ! which tmux >/dev/null; then
+        printf "\nInstalling tmux ...\n"
+        $(which brew) install tmux
+    fi
+}
+
+function setup_terminal() {
+    install_hyper
+    install_fish
+    install_tmux
+}
+
+# awesome dotfiles
+
+function install_ohmyzsh() {
+    if [ ! -d ~/.oh-my-zsh ]; then
+        printf "\nInstalling .oh-my-zsh ...\n"
+        curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
     fi
 }
 
@@ -48,13 +73,6 @@ function install_vimrc() {
     fi
 }
 
-function install_tmux() {
-    if ! which tmux >/dev/null; then
-        printf "\nInstalling tmux ...\n"
-        $(which brew) install tmux
-    fi
-}
-
 function install_dottmux() {
     if [ ! -d ~/.tmux ]; then
         printf "\nInstalling .tmux ...\n"
@@ -66,6 +84,15 @@ function install_dottmux() {
     ln -svf ~/.tmux/.tmux.conf ~/.tmux.conf
 }
 
+function setup_dotfiles() {
+    install_ohmyzsh
+    install_ohmyfish
+    install_vimrc
+    install_dottmux
+}
+
+# cli
+
 function install_autojump() {
     if ! which autojump >/dev/null; then
         printf "\nInstalling autojump ...\n"
@@ -73,32 +100,32 @@ function install_autojump() {
     fi
 }
 
-function install_hyper() {
-    if ! which hyper >/dev/null; then
-        printf "\nInstalling hyper ...\n"
-        $(which brew) cask install hyper
-    fi
+function setup_cli_tools() {
+    install_autojump
 }
 
-function pre_installs() {
-    installs=(
-        update_dotfiles
-        install_brew
-        install_ohmyzsh
-        install_fish
-        install_ohmyfish
-        install_vimrc
-        install_tmux
-        install_dottmux
-        install_autojump
-        install_hyper
+# setup
+
+function setup() {
+    setups=(
+        setup_meta
+        setup_terminal
+        setup_dotfiles
+        setup_cli_tools
     )
-    for install in "${installs[@]}"; do
-        $(expr $install)
+    for setup in "${setups[@]}"; do
+        $(expr $setup)
     done
 }
 
+# config
+
 EXCLUDE_PATTERNS=(".git/" ".DS_Store" "bootstrap.sh" "README.md" "LICENSE")
+
+function update_dotfiles() {
+    printf "\nUpdating .dotfiles in $DIR ...\n"
+    git -C "$DIR" pull --rebase --autostash
+}
 
 function sync_dotfiles() {
     printf "\nSyncing dotfiles ...\n"
@@ -110,10 +137,15 @@ function link_dotfiles() {
     find . -type f $(printf "*/%s*\n" "${EXCLUDE_PATTERNS[@]}" | sed 's/^/-not -iwholename /g') -exec ln -vf ~/'{}' '{}' ';'
 }
 
-function bootstrap() {
-    pre_installs
+function config() {
+    update_dotfiles
     sync_dotfiles
     link_dotfiles
+}
+
+function bootstrap() {
+    setup
+    config
 }
 
 if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
