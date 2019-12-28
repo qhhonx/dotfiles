@@ -74,8 +74,10 @@ function install_autojump() {
 }
 
 function install_alacritty() {
-    printf "\nInstalling alacritty ...\n"
-    $(which brew) cask install alacritty
+    if ! which alacritty >/dev/null && [ ! -d /Applications/Alacritty.app ]; then
+        printf "\nInstalling alacritty ...\n"
+        $(which brew) cask install alacritty
+    fi
 }
 
 function pre_installs() {
