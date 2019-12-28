@@ -13,37 +13,33 @@ function install_brew() {
     fi
 }
 
+function brew_install() {
+    for tool in "$@"; do
+        if ! which $tool >/dev/null; then
+            printf "\nInstalling $tool ...\n"
+            HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) install $tool
+        fi
+    done
+}
+
+function brew_cask_install() {
+    for tool in "$@"; do
+        if ! which $tool >/dev/null; then
+            printf "\nInstalling $tool ...\n"
+            HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) cask install $tool
+        fi
+    done
+}
+
 function setup_meta() {
     install_brew
 }
 
 # terminal & shell
 
-function install_hyper() {
-    if ! which hyper >/dev/null; then
-        printf "\nInstalling hyper ...\n"
-        $(which brew) cask install hyper
-    fi
-}
-
-function install_fish() {
-    if ! which fish >/dev/null; then
-        printf "\nInstalling fish ...\n"
-        $(which brew) install fish
-    fi
-}
-
-function install_tmux() {
-    if ! which tmux >/dev/null; then
-        printf "\nInstalling tmux ...\n"
-        $(which brew) install tmux
-    fi
-}
-
 function setup_terminal() {
-    install_hyper
-    install_fish
-    install_tmux
+    brew_cask_install hyper
+    brew_install fish tmux
 }
 
 # awesome dotfiles
@@ -93,15 +89,9 @@ function setup_dotfiles() {
 
 # cli
 
-function install_autojump() {
-    if ! which autojump >/dev/null; then
-        printf "\nInstalling autojump ...\n"
-        $(which brew) install autojump
-    fi
-}
-
 function setup_cli_tools() {
-    install_autojump
+    brew_install autojump tldr ripgrep
+    brew_cask_install fzf
 }
 
 # setup
