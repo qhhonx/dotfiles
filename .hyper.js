@@ -138,8 +138,15 @@ module.exports = {
     webGLRenderer: true,
 
     // for advanced config flags please refer to https://hyper.is/#cfg
-	
+
     modifierKeys: { altIsMeta: true },
+
+    // for plugin config
+
+    hyperBorder: {
+      borderColors: ['random', 'random'],
+      borderWidth: '1px',
+    },
   },
 
   // a list of plugins to fetch and install from npm
@@ -149,6 +156,11 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
+    // https://hyperthemes.matthi.coffee/
+    'hyper-flat',
+    'hyperminimal',
+    'hyperborder',
+    'hyper-font-smoothing',
   ],
 
   // in development, you can create a directory under
