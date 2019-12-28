@@ -143,10 +143,6 @@ module.exports = {
 
     // for plugin config
 
-    hyperBorder: {
-      borderColors: ['random', 'random'],
-      borderWidth: '1px',
-    },
   },
 
   // a list of plugins to fetch and install from npm
@@ -159,7 +155,6 @@ module.exports = {
     // https://hyperthemes.matthi.coffee/
     'hyper-flat',
     'hyperminimal',
-    'hyperborder',
     'hyper-font-smoothing',
   ],
 
