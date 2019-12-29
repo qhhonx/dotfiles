@@ -90,8 +90,7 @@ function setup_dotfiles() {
 # cli
 
 function setup_cli_tools() {
-    brew_install autojump tldr rg fd
-    brew_cask_install fzf
+    brew_install autojump tldr rg fd fzf
 }
 
 # setup
