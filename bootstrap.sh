@@ -37,9 +37,18 @@ function setup_meta() {
 
 # terminal & shell
 
+function set_fish_to_default() {
+    if ! grep -q $(which fish) /etc/shells; then
+        printf "\nSetting $(which fish) to default shell ...\n"
+        echo $(which fish) | sudo tee -a /etc/shells
+        chsh -s $(which fish)
+    fi
+}
+
 function setup_terminal() {
     brew_cask_install hyper
     brew_install fish tmux
+    set_fish_to_default
 }
 
 # awesome dotfiles
@@ -54,7 +63,10 @@ function install_ohmyzsh() {
 function install_ohmyfish() {
     if [ ! -d ~/.local/share/omf ]; then
         printf "\nInstalling .oh-my-fish ...\n"
-        curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | $(which fish)
+        TMPFILE=$(mktemp)
+        curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > $TMPFILE
+        $(which fish) $TMPFILE --noninteractive --yes
+        rm $TMPFILE
     fi
 }
 
