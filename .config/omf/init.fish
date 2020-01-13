@@ -3,3 +3,6 @@
 
 # rust
 set PATH $HOME/.cargo/bin $PATH
+
+# theme
+set fish_pager_color_progress cyan
