@@ -2,4 +2,4 @@ package https://github.com/jhillyerd/plugin-git
 package sudope
 package xcode
 theme default
-theme eden
+theme spacefish
