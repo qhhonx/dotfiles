@@ -153,7 +153,8 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     // https://hyperthemes.matthi.coffee/
-    'hyper-flat',
+    // 'hyper-flat',
+    "hyper-night-owl",
     'hyperminimal',
     'hyper-font-smoothing',
   ],
