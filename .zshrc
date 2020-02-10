@@ -100,7 +100,6 @@ fi
 
 # golang
 export GOPATH=${HOME}/.go_workspace
-export PATH=${PATH}:${GOPATH}/bin
 
 # python
 export PYTHONDONTWRITEBYTECODE=1 # disabling bytecode(.pyc) files
