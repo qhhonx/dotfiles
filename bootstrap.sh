@@ -73,7 +73,7 @@ function setup_terminal() {
     brew_cask_install hyper
     brew_install fish tmux
     aptget_install fish tmux
-    # set_default_shell fish
+    set_default_shell fish
 }
 
 # awesome dotfiles
