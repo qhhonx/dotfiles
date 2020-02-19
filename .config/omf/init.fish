@@ -7,6 +7,7 @@ set PATH $HOME/.cargo/bin $PATH
 
 # golang
 set -x -U GOPATH $HOME/.go_workspace
+set PATH $GOPATH/bin $PATH
 
 # theme
 set fish_pager_color_progress cyan
