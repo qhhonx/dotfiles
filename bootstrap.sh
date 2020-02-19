@@ -15,17 +15,15 @@ function is_darwin() {
 }
 
 function install_brew() {
-    is_darwin || return
-    if ! which brew >/dev/null; then
+    if is_darwin && ! which brew >/dev/null; then
         printf "\nInstalling brew ...\n"
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
 }
 
 function brew_install() {
-    is_darwin || return
     for tool in "$@"; do
-        if ! which $tool >/dev/null; then
+        if is_darwin && ! which $tool >/dev/null; then
             printf "\nInstalling $tool ...\n"
             HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) install $tool
         fi
@@ -33,9 +31,8 @@ function brew_install() {
 }
 
 function brew_cask_install() {
-    is_darwin || return
     for tool in "$@"; do
-        if ! which $tool >/dev/null; then
+        if is_darwin && ! which $tool >/dev/null; then
             printf "\nInstalling $tool ...\n"
             HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) cask install $tool
         fi
@@ -43,9 +40,8 @@ function brew_cask_install() {
 }
 
 function aptget_install() {
-    is_darwin && return
     for tool in "$@"; do
-        if ! which $tool >/dev/null; then
+        if ! is_darwin && ! which $tool >/dev/null; then
             printf "\nInstalling $tool ...\n"
             sudo $(which apt-get) install $tool
         fi
