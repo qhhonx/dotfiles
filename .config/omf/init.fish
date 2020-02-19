@@ -6,7 +6,7 @@
 set PATH $HOME/.cargo/bin $PATH
 
 # golang
-set -x -U GOPATH $HOME/.go_workspace
+set GOPATH $HOME/.go_workspace
 set PATH $GOPATH/bin $PATH
 
 # theme
