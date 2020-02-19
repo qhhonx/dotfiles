@@ -73,7 +73,7 @@ function setup_terminal() {
     brew_cask_install hyper
     brew_install fish tmux
     aptget_install fish tmux
-    set_default_shell fish
+    # set_default_shell fish
 }
 
 # awesome dotfiles
@@ -118,7 +118,7 @@ function install_dottmux() {
 }
 
 function setup_dotfiles() {
-    install_ohmyzsh
+    # install_ohmyzsh
     install_ohmyfish
     install_vimrc
     install_dottmux
