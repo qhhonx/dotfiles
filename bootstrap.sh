@@ -6,7 +6,16 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # meta
 
+function is_darwin() {
+    if [[ $(uname -s | awk '{print tolower($0)}') == darwin* ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 function install_brew() {
+    is_darwin || return
     if ! which brew >/dev/null; then
         printf "\nInstalling brew ...\n"
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -14,6 +23,7 @@ function install_brew() {
 }
 
 function brew_install() {
+    is_darwin || return
     for tool in "$@"; do
         if ! which $tool >/dev/null; then
             printf "\nInstalling $tool ...\n"
@@ -23,10 +33,21 @@ function brew_install() {
 }
 
 function brew_cask_install() {
+    is_darwin || return
     for tool in "$@"; do
         if ! which $tool >/dev/null; then
             printf "\nInstalling $tool ...\n"
             HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) cask install $tool
+        fi
+    done
+}
+
+function aptget_install() {
+    is_darwin && return
+    for tool in "$@"; do
+        if ! which $tool >/dev/null; then
+            printf "\nInstalling $tool ...\n"
+            sudo $(which apt-get) install $tool
         fi
     done
 }
@@ -55,6 +76,7 @@ function set_default_shell() {
 function setup_terminal() {
     brew_cask_install hyper
     brew_install fish tmux
+    aptget_install fish tmux
     set_default_shell fish
 }
 
