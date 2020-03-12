@@ -70,7 +70,7 @@ function set_default_shell() {
 }
 
 function setup_terminal() {
-    brew_cask_install hyper
+    brew_cask_install hyper clean-me
     brew_install fish tmux
     aptget_install fish tmux
     set_default_shell fish
