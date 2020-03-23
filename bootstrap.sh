@@ -17,7 +17,7 @@ function is_darwin() {
 function install_brew() {
     if is_darwin && ! which brew >/dev/null; then
         printf "\nInstalling brew ...\n"
-        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     fi
 }
 
