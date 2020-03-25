@@ -39,6 +39,17 @@ function brew_cask_install() {
     done
 }
 
+function brew_tap_cask_install() {
+    for item in "$@"; do
+        set -- $item
+        if is_darwin && ! $(which brew) cask list | grep $2 >/dev/null; then
+            printf "\nInstalling $2 ...\n"
+            HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) tap $1
+            HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) cask install $2
+        fi
+    done
+}
+
 function aptget_install() {
     for tool in "$@"; do
         if ! is_darwin && ! which $tool >/dev/null; then
@@ -71,6 +82,7 @@ function set_default_shell() {
 
 function setup_terminal() {
     brew_cask_install hyper clean-me visual-studio-code alfred
+    brew_tap_cask_install "homebrew/cask-fonts font-inconsolata"
     brew_install fish tmux
     aptget_install fish tmux
     set_default_shell fish
