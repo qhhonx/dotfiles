@@ -31,21 +31,16 @@ function brew_install() {
 }
 
 function brew_cask_install() {
-    for tool in "$@"; do
-        if is_darwin && ! $(which brew) cask list | grep $tool >/dev/null; then
-            printf "\nInstalling $tool ...\n"
-            HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) cask install $tool
-        fi
-    done
-}
-
-function brew_tap_cask_install() {
     for item in "$@"; do
         set -- $item
-        if is_darwin && ! $(which brew) cask list | grep $2 >/dev/null; then
-            printf "\nInstalling $2 ...\n"
-            HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) tap $1
-            HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) cask install $2
+        formula=$1; tool=$2
+        if [ -z $tool ]; then 
+            tool=$1; formula=""
+        fi
+        if [ ! -z $tool ] && is_darwin && ! $(which brew) cask list | grep $tool >/dev/null; then
+            printf "\nInstalling $tool ...\n"
+            [ ! -z $formula ] && HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) tap $formula
+            HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) cask install $tool
         fi
     done
 }
@@ -81,8 +76,9 @@ function set_default_shell() {
 }
 
 function setup_terminal() {
-    brew_cask_install hyper clean-me visual-studio-code alfred
-    brew_tap_cask_install "homebrew/cask-fonts font-inconsolata"
+    brew_cask_install \
+        alfred appgrid clean-me hyper istat-menus visual-studio-code \
+        "homebrew/cask-fonts font-inconsolata"
     brew_install fish tmux
     aptget_install fish tmux
     set_default_shell fish
