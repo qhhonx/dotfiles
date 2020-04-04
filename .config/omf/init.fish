@@ -3,11 +3,11 @@
 [ -f /usr/share/autojump/autojump.fish ]; and source /usr/share/autojump/autojump.fish
 
 # rust
-set -x RUSTPATH $HOME/.rust_workspace
+set -xg RUSTPATH $HOME/.rust_workspace
 set PATH $HOME/.cargo/bin $PATH
 
 # golang
-set -x GOPATH $HOME/.go_workspace
+set -xg GOPATH $HOME/.go_workspace
 set PATH $GOPATH/bin $PATH
 
 # theme
