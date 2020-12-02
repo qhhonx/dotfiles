@@ -39,7 +39,7 @@ function brew_cask_install() {
         fi
         is_darwin && [ ! -z $formula ] && HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) tap $formula
         for tool in "$@"; do
-            if is_darwin && [ "$tool" != "$formula" ] && ! $(which brew) cask list | grep $tool >/dev/null; then
+            if is_darwin && [ "$tool" != "$formula" ] && ! $(which brew) list --cask | grep $tool >/dev/null; then
                 printf "\nInstalling $tool ...\n"
                 HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) cask install $tool
             fi
@@ -79,7 +79,7 @@ function set_default_shell() {
 
 function setup_terminal() {
     brew_cask_install \
-        alfred appgrid clean-me hyper istat-menus visual-studio-code \
+        alfred appgrid clean-me hyper istat-menus visual-studio-code alacritty \
         "homebrew/cask-fonts font-inconsolata font-jetbrains-mono"
     brew_install fish tmux
     aptget_install fish tmux
