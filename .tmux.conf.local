@@ -278,7 +278,7 @@ tmux_conf_copy_to_os_clipboard=false
 #set -g history-limit 10000
 
 # start with mouse mode enabled
-#set -g mouse on
+set -g mouse on
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
@@ -294,3 +294,8 @@ tmux_conf_copy_to_os_clipboard=false
 
 # move status line to top
 #set -g status-position top
+
+# -- mouse mode ---------------------------------------------------------------
+# If you don't want to exit copy mode upon mouse selection, try editing your ~/.tmux.conf.local copy and write:
+bind -T copy-mode MouseDragEnd1Pane send-keys -X copy-selection
+bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-selection
