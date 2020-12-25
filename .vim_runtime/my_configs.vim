@@ -3,7 +3,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 source ~/.vim_runtime/my_configs/nerdtree.vim
-source ~/.vim_runtime/my_configs/night-owl.vim
+"source ~/.vim_runtime/my_configs/night-owl.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => misc
