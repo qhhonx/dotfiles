@@ -1,12 +1,23 @@
-"""""""""""""""
-""" 水平滚动"""
-"""""""""""""""
-" 向左
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => my_configs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+source ~/.vim_runtime/my_configs/night-owl.vim
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => misc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" scroll toward left
 map <F7> 10zh
 imap <F7> <ESC>10zhi 
-" 向右
+
+" scroll toward right
 map <F8> 10zl
 imap <F8> <ESC>10zli
 
-set nu
+" display line number
+set number
+
+" no word wrap
 set nowrap

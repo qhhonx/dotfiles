@@ -1,0 +1,207 @@
+# run this in vim
+# :help group-name
+#
+# BASE UI
+Normal: 'white dark'
+LineNr: 'gray4 dark'
+# hi LineNr guifg=#444444 ctermfg=238 guibg=#011627 ctermbg=233 gui=NONE cterm=NONE
+
+# the screen line that the cursor is in when 'cursorline' is set
+CursorLine: '. neardark'
+# hi CursorLine guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
+CursorLineNr: 'graya neardark'
+ColorColumn: '. gray2'
+Cursor: ''
+Conceal: ''
+CursorIM: ''
+CursorColumn: ''
+Directory: 'blue .'
+
+DiffAdd: 'dark green'
+DiffChange: 'dark yellow'
+DiffDelete: 'dark red'
+DiffText: 'dark green'
+
+diffAdded: 'green .'
+diffRemoved: 'red .'
+
+ErrorMsg: ''
+VertSplit: 'gray7 .'
+Folded: 'gray7 dark'
+FoldColumn: 'gray3 dark'
+SignColumn: '- dark'
+IncSearch: 'bright yellow'
+# MatchParen: 'dark graya'
+ModeMsg: ''
+MoreMsg: ''
+NonText: 'gray4 .'
+PMenu: '. purple2'
+PMenuSel: '. purple'
+PmenuSbar: ''
+PmenuThumb: ''
+Question: ''
+Search: 'dark yellow'
+SpecialKey: 'yellow .'
+# SpecialKey: 'gray4 .'
+SpellBad: ''
+SpellLocal: ''
+SpellCap: ''
+SpellRare: ''
+StatusLine: 'bright neardark'
+StatusLineNC: 'gray7 neardark'
+TabLine: ''
+TabLineFill: ''
+TabLineSel: ''
+Title: 'blue . b'
+Visual: 'white purple2'
+VisualNOS: ''
+WarningMsg: ''
+WildMenu: ''
+EndOfBuffer: 'gray4 dark'
+# BASE SYNTAX
+Comment: 'gray . i'
+Constant: 'green .'
+String: 'yellow .'
+Character: '' # Constant
+Boolean: '' # Constant
+Number: '' # Constant
+Float: '' # Constant
+Identifier: 'green2 .'
+Function: '' # Identifier
+Statement: 'blue .'
+Conditional: '' # Statement
+Repeat: '' # Statement
+Label: '' # Statement
+Operator: 'purple .' # Statement
+Keyword: '' # Statement
+Exception: 'green .' # Statement
+PreProc: 'purple .'
+Include: '' # PreProc
+Define: '' # PreProc
+Macro: '' # PreProc
+PreCondit: '' # PreProc
+Type: 'green .'
+StorageClass: 'purple .' # Type
+Structure: '' # Type
+Typedef: '' # Type
+Special: ''
+SpecialChar: '' # Special
+Tag: '' # Special
+htmlTag: 'gray'
+htmlEndTag: '@htmlTag'
+Delimiter: '' # Special
+SpecialComment: '' # Special
+Debug: '' # Special
+Underlined: ''
+Ignore: ''
+Error: ''
+Todo: 'gray7 yellow'
+
+# Javascript - pangloss/vim-javascript
+jsStorageClass: 'blue .'
+jsOperator: 'purple .'
+jsArrowFunction: 'purple .'
+# jsGlobalNodeObjects: 'green dark'
+jsString: 'yellow .'
+jsComment: 'gray . i'
+jsFuncCall: 'blue .'
+jsNumber: 'yellow2 .'
+jsSpecial: 'yellow2 .'
+jsObjectProp: 'green2 .'
+jsOperatorKeyword: 'green2 .'
+jsBooleanFalse: 'red .'
+jsBooleanTrue: 'red .'
+jsRegexpString: 'blue2 .'
+jsConditional: 'purple .'
+jsFunction: 'blue .'
+jsReturn: 'purple .'
+jsFuncName: 'blue .'
+jsParensError: '@jsFuncParens'
+jsClassDefinition: 'yellow .'
+jsImport: 'purple . i'
+jsFrom: 'purple . i'
+jsModuleAs: 'purple . i'
+jsExport: 'green2 .'
+jsExportDefault: 'green2 .'
+jsExtendsKeyword: 'purple . i'
+
+javaScriptReserved: 'blue .'
+javaScriptConditional: 'purple .'
+javaScriptStringS: 'yellow .'
+javaScriptBoolean: 'red .'
+javaScriptBraces: 'white .'
+javaScriptLineComment: 'gray . i'
+javaScriptSpecial: 'yellow2 .'
+javaScriptFunction: 'blue .'
+javaScriptStatement: 'purple .'
+# catch
+javaScriptException: 'green .'
+
+##### CSS and Sass
+scssSelectorName: 'green .'
+cssTagName: 'red .'
+cssClassName: 'green . i'
+cssClassNameDot: '@cssClassName'
+cssBraces: 'white .'
+cssPositioningProp: 'green2 .'
+cssBoxProp: 'green2 .'
+cssDimensionProp: 'green2 .'
+cssTransitionProp: 'green2 .'
+cssTextProp: 'green2 .'
+cssFontProp: 'green2 .'
+cssBorderProp: 'green2 .'
+cssBackgroundProp: 'green2 .'
+# box-sizing
+cssUIProp: 'green2 .'
+# filter
+cssIEUIProp: 'red .'
+scssFunctionName: 'green .'
+cssPositioningAttr: 'red .'
+cssTableAttr: 'red .'
+cssCommonAttr: 'red .'
+cssColorProp: 'green2 .'
+cssIncludeKeyword: 'green2 .'
+cssKeyFrameSelector: 'green .'
+cssPseudoClassId: 'green . i'
+cssBorderAttr: 'red .'
+cssValueLength: 'yellow2 .'
+cssUnitDecorators: 'yellow3 .'
+cssIdentifier: 'yellow4 . i'
+
+##### markdown
+markdownHeadingDelimiter: 'gray .'
+markdownCodeDelimiter: 'yellow .'
+markdownCode: 'graya .'
+mkdCodeStart: 'white .'
+mkdCodeEnd: 'white .'
+mkdLinkDef: 'green2 .'
+mkdCodeDelimiter: 'gray dark'
+htmlH1: 'blue . b'
+htmlH2: '@htmlH1'
+htmlH3: '@htmlH1'
+htmlH4: 'blue .'
+htmlH5: '@htmlH4'
+htmlBold: 'purple dark b'
+shComment: 'gray dark i'
+
+##### nerd tree
+NERDTreeDir: 'hoki .'
+NERDTreeOpenable: 'red .'
+NERDTreeClosable: 'yellow .'
+NERDTreeHelp: 'gray4 . i'
+NERDTreeUp: 'gray .'
+NERDTreeDirSlash: 'gray .'
+
+##### git
+gitcommitSummary: 'white .'
+
+##### indent guide
+# https://github.com/nathanaelkane/vim-indent-guides
+IndentGuidesOdd: '. gray4'
+IndentGuidesEven: '. gray7'
+
+##### GitGutter airblade/vim-gitgutter
+GitGutterAdd: 'green .'
+GitGutterChange: 'yellow .'
+GitGutterDelete: 'red .'
+GitGutterChangeDelete: 'yellow .'

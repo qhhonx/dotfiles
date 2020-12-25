@@ -112,9 +112,13 @@ function install_vimrc() {
         sh ~/.vim_runtime/install_awesome_vimrc.sh
     else
         printf "\nUpdating .vimrc ...\n"
-        git -C ~/.vim_runtime pull --rebase
-        python ~/.vim_runtime/update_plugins.py
+        git -C ~/.vim_runtime pull --rebase --autostash
     fi
+    if ! pip3 list | grep requests >/dev/null; then
+        sudo -H pip3 install requests
+    fi
+    python3 ~/.vim_runtime/update_plugins.py
+    python3 .vim_runtime/my_plugins/update_plugins.py
 }
 
 function install_dottmux() {
@@ -123,7 +127,7 @@ function install_dottmux() {
         git clone --depth=1 https://github.com/gpakosz/.tmux.git ~/.tmux
     else
         printf "\nUpdating .tmux ...\n"
-        git -C ~/.tmux pull --rebase
+        git -C ~/.tmux pull --rebase --autostash
     fi
     ln -svf ~/.tmux/.tmux.conf ~/.tmux.conf
 }
@@ -171,7 +175,7 @@ function sync_dotfiles() {
 
 function link_dotfiles() {
     printf "\nLinking dotfiles ...\n"
-    find . -type f $(printf "*/%s*\n" "${EXCLUDE_PATTERNS[@]}" | sed 's/^/-not -iwholename /g') -exec ln -vf ~/'{}' '{}' ';'
+    find . -type f $(printf "*/%s*\n" "${EXCLUDE_PATTERNS[@]}" | sed 's/^/-not -iwholename /g') -exec ln -f ~/'{}' '{}' ';'
 }
 
 function config() {
