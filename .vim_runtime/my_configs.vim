@@ -2,7 +2,7 @@
 " => my_configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-source ~/.vim_runtime/my_configs/night-owl.vim
+source ~/.vim_runtime/my_configs/*.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => misc

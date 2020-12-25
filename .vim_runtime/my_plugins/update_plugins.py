@@ -16,6 +16,7 @@ from os import mkdir, path
 # --- Globals ----------------------------------------------
 PLUGINS = """
 night-owl.vim https://github.com/haishanh/night-owl.vim
+nerdtree https://github.com/preservim/nerdtree
 """.strip()
 
 GITHUB_ZIP = "%s/archive/master.zip"
