@@ -113,6 +113,7 @@ function install_vimrc() {
     else
         printf "\nUpdating .vimrc ...\n"
         git -C ~/.vim_runtime pull --rebase
+        python ~/.vim_runtime/update_plugins.py
     fi
 }
 
