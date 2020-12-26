@@ -178,19 +178,18 @@ function link_dotfiles() {
     find . -type f $(printf "*/%s*\n" "${EXCLUDE_PATTERNS[@]}" | sed 's/^/-not -iwholename /g') -exec ln -f ~/'{}' '{}' ';'
 }
 
-function config() {
+function bootstrap() {
+    setup
     update_dotfiles
     sync_dotfiles
     link_dotfiles
 }
 
-function bootstrap() {
-    setup
-    config
-}
-
 if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
     bootstrap
+elif [ "$1" == "--fast" ]; then
+    sync_dotfiles
+    link_dotfiles
 else
     read -p "This may overwrites existing files in your home directory. Are you sure? (y/n) " -n 1
     echo ""
