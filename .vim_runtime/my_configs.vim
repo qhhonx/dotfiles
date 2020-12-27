@@ -2,9 +2,9 @@
 " => my_configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+source ~/.vim_runtime/my_configs/vim-plug.vim
 source ~/.vim_runtime/my_configs/coc.vim
 source ~/.vim_runtime/my_configs/nerdtree.vim
-"source ~/.vim_runtime/my_configs/night-owl.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => misc

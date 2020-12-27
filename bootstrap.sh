@@ -83,7 +83,7 @@ function setup_terminal() {
         "homebrew/cask-fonts font-inconsolata font-jetbrains-mono"
     brew_install fish tmux
     aptget_install fish tmux
-    set_default_shell fish
+    # set_default_shell fish
 }
 
 # awesome dotfiles
@@ -145,9 +145,9 @@ function setup_cli_tools() {
     brew_install autojump tldr rg fd fzf tig
 }
 
-# setup
+# pre_install
 
-function setup() {
+function pre_install() {
     setups=(
         setup_meta
         setup_terminal
@@ -159,7 +159,7 @@ function setup() {
     done
 }
 
-# config
+# install dotfiles
 
 EXCLUDE_PATTERNS=(".git/" ".DS_Store" "bootstrap.sh" "README.md" "LICENSE")
 
@@ -178,23 +178,52 @@ function link_dotfiles() {
     find . -type f $(printf "*/%s*\n" "${EXCLUDE_PATTERNS[@]}" | sed 's/^/-not -iwholename /g') -exec ln -f ~/'{}' '{}' ';'
 }
 
-function bootstrap() {
-    setup
+function install() {
     update_dotfiles
     sync_dotfiles
     link_dotfiles
 }
 
-if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
+# post_install
+
+function vim_plug_install {
+    vim +PlugInstall +qall
+}
+
+function post_install() {
+    vim_plug_install
+}
+
+function bootstrap() {
+    pre_install
+    install
+    post_install
+}
+
+# usage
+
+# https://sookocheff.com/post/bash/parsing-bash-script-arguments-with-shopts/
+while getopts ":fs" opt; do
+    case ${opt} in
+        f) # force to bootstrap
+            bootstrap
+            exit 1
+            ;;
+        s) # skip to pre_install
+            install
+            post_install
+            exit 1
+            ;;
+        \?) echo "Usage: ./bootstrap.sh [-f] [-s]"
+            exit 0
+            ;;
+    esac
+done
+
+shift $((OPTIND -1))
+
+read -p "This may overwrites existing files in your home directory. Are you sure? (y/n) " -n 1
+echo ""
+if [[ $REPLY =~ ^[Yy]$ ]]; then
     bootstrap
-elif [ "$1" == "--fast" ]; then
-    sync_dotfiles
-    link_dotfiles
-else
-    read -p "This may overwrites existing files in your home directory. Are you sure? (y/n) " -n 1
-    echo ""
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        bootstrap
-    fi
 fi
-unset bootstrap
