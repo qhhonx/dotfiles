@@ -209,9 +209,8 @@ while getopts ":fs" opt; do
             bootstrap
             exit 1
             ;;
-        s) # skip to pre_install
+        s) # skip to pre_install/post_instll
             install
-            post_install
             exit 1
             ;;
         \?) echo "Usage: ./bootstrap.sh [-f] [-s]"

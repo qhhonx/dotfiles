@@ -2,9 +2,10 @@
 " => my_configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-source ~/.vim_runtime/my_configs/vim-plug.vim
+source ~/.vim_runtime/my_configs/vim_plug.vim
 source ~/.vim_runtime/my_configs/coc.vim
 source ~/.vim_runtime/my_configs/nerdtree.vim
+source ~/.vim_runtime/my_configs/fzf_preview.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => misc
@@ -35,3 +36,6 @@ nnoremap <leader>7 7gt
 nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 nnoremap <leader>0 :tablast<cr>
+
+" reserve space shortcut
+unmap <space>

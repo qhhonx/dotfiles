@@ -1,5 +1,5 @@
 "You can also use g:coc_global_extensions in vimrc to make coc.nvim install extensions for you when extension not found.
-let g:coc_global_extensions=['coc-rust-analyzer', 'coc-json', 'coc-vimlsp']
+let g:coc_global_extensions=['coc-rust-analyzer', 'coc-json', 'coc-vimlsp', 'coc-fzf-preview']
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
