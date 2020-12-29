@@ -1,8 +1,1 @@
-{
-    "coc.preferences.extensionUpdateCheck": "daily" ,
-    "rust-analyzer.inlayHints.refreshOnInsertMode": true,
-    "rust-analyzer.inlayHints.enable": false,
-    "rust-analyzer.inlayHints.typeHints": false,
-    "rust-analyzer.inlayHints.chainingHints": false,
-    "rust-analyzer.checkOnSave.command": "clippy"
-}
+../.config/nvim/coc-settings.json
