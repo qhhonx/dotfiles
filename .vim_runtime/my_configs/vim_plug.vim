@@ -4,10 +4,10 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'preservim/nerdtree'
-Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
+Plug 'rakr/vim-one'
+Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
 
 " Initialize plugin system
 call plug#end()

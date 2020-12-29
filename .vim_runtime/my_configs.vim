@@ -6,6 +6,8 @@ source ~/.vim_runtime/my_configs/vim_plug.vim
 source ~/.vim_runtime/my_configs/coc.vim
 source ~/.vim_runtime/my_configs/nerdtree.vim
 source ~/.vim_runtime/my_configs/fzf_preview.vim
+source ~/.vim_runtime/my_configs/vim_one.vim
+" source ~/.vim_runtime/my_configs/onedark.vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => misc
@@ -25,6 +27,9 @@ set number
 " no word wrap
 set nowrap
 
+" no need show Insert/Replace/Visual mode
+set noshowmode
+
 " go to tab by number
 nnoremap <leader>2 2gt
 nnoremap <leader>1 1gt
@@ -37,5 +42,5 @@ nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 nnoremap <leader>0 :tablast<cr>
 
-" reserve space shortcut
-unmap <space>
+" reserve space key
+nunmap <space>

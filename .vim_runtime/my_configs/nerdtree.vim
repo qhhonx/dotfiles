@@ -2,6 +2,8 @@
 " `let g` means *set globally*
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinSize=64
+let g:NERDTreeShowHidden=1
 
 " nnoremap means *normal non-recusive map*
-nnoremap <leader>f :NERDTreeToggle<Enter>
+" e means Explorer
+nnoremap <leader>e :NERDTreeToggle<Enter>

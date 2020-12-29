@@ -3,7 +3,7 @@ let g:coc_global_extensions=['coc-rust-analyzer', 'coc-json', 'coc-vimlsp', 'coc
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=500"
+set updatetime=300
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
@@ -34,7 +34,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent><nowait> <space> :call <SID>show_documentation()<CR>
+nnoremap <silent><nowait> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -48,9 +48,6 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -68,10 +65,8 @@ omap ac <Plug>(coc-classobj-a)
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" Mappings for CoCList
-
 " Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <space>cc  :<C-u>CocList commands<cr>
 
 " Show all diagnostics.
 nnoremap <silent><nowait> <space>ca  :<C-u>CocList diagnostics<cr>
@@ -93,4 +88,10 @@ nnoremap <silent><nowait> <space>ck  :<C-u>CocPrev<CR>
 
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>cp  :<C-u>CocListResume<CR>
+
+" Show action (quick fix)
+nnoremap <silent><nowait> <space>cf  :<C-u>CocAction<cr>
+
+" Symbol renaming.
+nmap <space>cr <Plug>(coc-rename)
 
