@@ -1,20 +1,50 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => reset vim_runtime default configs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-unmap <leader>f
-unmap <leader>b
+""""""""""""""""""""""""""""""
+" => Load pathogen paths
+""""""""""""""""""""""""""""""
+let s:vim_runtime = expand('<sfile>:p:h')
+call pathogen#infect(s:vim_runtime.'/my_plugins/{}')
+call pathogen#helptags()
 
+""""""""""""""""""""""""""""""
+" => Load vim-plug
+""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged')
+
+Plug 'airblade/vim-gitgutter'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'joshdick/onedark.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
+Plug 'rakr/vim-one'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+
+" Initialize plugin system
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => my_configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Function to source only if file exists
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
 
-source ~/.vim_runtime/my_configs/vim_plug.vim
-source ~/.vim_runtime/my_configs/coc.vim
-source ~/.vim_runtime/my_configs/nerdtree.vim
-source ~/.vim_runtime/my_configs/fzf_preview.vim
-source ~/.vim_runtime/my_configs/vim_one.vim
-" source ~/.vim_runtime/my_configs/onedark.vim
+" Function to source all .vim files in directory
+function! SourceDirectory(file)
+  for s:fpath in split(globpath(a:file, '*.vim'), '\n')
+    call SourceIfExists(s:fpath)
+  endfor
+endfunction
+
+call SourceDirectory('~/.vim_runtime/inspired')
+call SourceDirectory('~/.vim_runtime/my_configs')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => misc

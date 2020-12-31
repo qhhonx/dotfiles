@@ -105,22 +105,6 @@ function install_ohmyfish() {
     fi
 }
 
-function install_vimrc() {
-    if [ ! -d ~/.vim_runtime ]; then
-        printf "\nInstalling .vimrc ...\n"
-        git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
-        sh ~/.vim_runtime/install_awesome_vimrc.sh
-    else
-        printf "\nUpdating .vimrc ...\n"
-        git -C ~/.vim_runtime pull --rebase --autostash
-    fi
-    if ! pip3 list | grep requests >/dev/null; then
-        sudo -H pip3 install requests
-    fi
-    python3 ~/.vim_runtime/update_plugins.py
-    python3 .vim_runtime/my_plugins/update_plugins.py
-}
-
 function install_dottmux() {
     if [ ! -d ~/.tmux ]; then
         printf "\nInstalling .tmux ...\n"
@@ -135,7 +119,6 @@ function install_dottmux() {
 function setup_dotfiles() {
     # install_ohmyzsh
     install_ohmyfish
-    install_vimrc
     install_dottmux
 }
 
