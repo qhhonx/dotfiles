@@ -79,7 +79,7 @@ function set_default_shell() {
 
 function setup_terminal() {
     brew_cask_install \
-        alfred appgrid clean-me hyper istat-menus visual-studio-code alacritty \
+        alfred appgrid clean-me istat-menus visual-studio-code alacritty \
         "homebrew/cask-fonts font-inconsolata font-jetbrains-mono"
     brew_install fish tmux
     aptget_install fish tmux
@@ -87,13 +87,6 @@ function setup_terminal() {
 }
 
 # awesome dotfiles
-
-function install_ohmyzsh() {
-    if [ ! -d ~/.oh-my-zsh ]; then
-        printf "\nInstalling .oh-my-zsh ...\n"
-        curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh
-    fi
-}
 
 function install_ohmyfish() {
     if [ ! -d ~/.local/share/omf ]; then
@@ -117,7 +110,6 @@ function install_dottmux() {
 }
 
 function setup_dotfiles() {
-    # install_ohmyzsh
     install_ohmyfish
     install_dottmux
 }
