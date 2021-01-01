@@ -10,6 +10,7 @@ call pathogen#helptags()
 """"""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
+Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'joshdick/onedark.vim'
@@ -52,7 +53,7 @@ call SourceDirectory('~/.vim_runtime/my_configs')
 
 " scroll toward left
 map <F7> 10zh
-imap <F7> <ESC>10zhi 
+imap <F7> <ESC>10zhi
 
 " scroll toward right
 map <F8> 10zl
