@@ -10,6 +10,9 @@ call pathogen#helptags()
 """"""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'airblade/vim-gitgutter'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'joshdick/onedark.vim'

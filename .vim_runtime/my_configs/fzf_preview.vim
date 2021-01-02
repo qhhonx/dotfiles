@@ -28,24 +28,28 @@ let g:fzf_preview_directory_files_command = "fd --follow --hidden --exclude .git
 " Keyboard shortcuts while fzf preview is active
 let g:fzf_preview_preview_key_bindings = 'ctrl-d:preview-page-down,ctrl-u:preview-page-up,?:toggle-preview'
 
-" Select project files
-nnoremap <silent><nowait> <leader>ff  :<C-u>CocCommand fzf-preview.ProjectFiles<CR>
+noremap [fzf-p] <Nop>
+nmap <Leader>f [fzf-p]
+xmap <Leader>f [fzf-p]
 
-" Select file from directory files (default to current working directory)
-nnoremap <silent><nowait> <leader>fd  :<C-u>CocCommand fzf-preview.DirectoryFiles<Space>
-
-" Select file from git ls-files
-nnoremap <silent><nowait> <leader>fg  :<C-u>CocCommand fzf-preview.GitFiles<CR>
-
-" Grep project files from args word
-nnoremap <silent><nowait> <leader>fr  :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
-
-" Select references from coc.nvim (only coc extensions)
-nnoremap <silent><nowait> <leader>fcr  :<C-u>CocCommand fzf-preview.CocReferences<CR>
-
-" Select diagnostics from coc.nvim (only coc extensions)
-nnoremap <silent><nowait> <leader>fca  :<C-u>CocCommand fzf-preview.CocDiagnostics<CR>
-
-" Select type definitions from coc.nvim (only coc extensions)
-nnoremap <silent><nowait> <leader>fcy  :<C-u>CocCommand fzf-preview.CocTypeDefinitions<CR>
-
+nnoremap <silent> [fzf-p]B     :<C-u>CocCommand fzf-preview.AllBuffers<CR>
+nnoremap <silent> [fzf-p]t     :<C-u>CocCommand fzf-preview.BufferTags<CR>
+nnoremap <silent> [fzf-p]b     :<C-u>CocCommand fzf-preview.Buffers<CR>
+nnoremap <silent> [fzf-p]g;    :<C-u>CocCommand fzf-preview.Changes<CR>
+nnoremap <silent> [fzf-p]ca    :<C-u>CocCommand fzf-preview.CocDiagnostics<CR>
+nnoremap <silent> [fzf-p]cr    :<C-u>CocCommand fzf-preview.CocReferences<CR>
+nnoremap <silent> [fzf-p]cy    :<C-u>CocCommand fzf-preview.CocTypeDefinitions<CR>
+nnoremap <silent> [fzf-p]d     :<C-u>CocCommand fzf-preview.DirectoryFiles<Space>
+nnoremap <silent> [fzf-p]o     :<C-u>CocCommand fzf-preview.FromResources buffer project_mru<CR>
+nnoremap <silent> [fzf-p]p     :<C-u>CocCommand fzf-preview.FromResources project_mru git<CR>
+nnoremap <silent> [fzf-p]ga    :<C-u>CocCommand fzf-preview.GitActions<CR>
+nnoremap <silent> [fzf-p]gf    :<C-u>CocCommand fzf-preview.GitFiles<CR>
+nnoremap <silent> [fzf-p]gs    :<C-u>CocCommand fzf-preview.GitStatus<CR>
+nnoremap <silent> [fzf-p]<C-o> :<C-u>CocCommand fzf-preview.Jumps<CR>
+nnoremap <silent> [fzf-p]/     :<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--no-sort --add-fzf-arg=--query="'"<CR>
+nnoremap <silent> [fzf-p]*     :<C-u>CocCommand fzf-preview.Lines --add-fzf-arg=--no-sort --add-fzf-arg=--query="'<C-r>=expand('<cword>')<CR>"<CR>
+nnoremap <silent> [fzf-p]l     :<C-u>CocCommand fzf-preview.LocationList<CR>
+nnoremap <silent> [fzf-p]f     :<C-u>CocCommand fzf-preview.ProjectFiles<CR>
+nnoremap          [fzf-p]gr    :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
+xnoremap          [fzf-p]gr    "sy:CocCommand   fzf-preview.ProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
+nnoremap <silent> [fzf-p]q     :<C-u>CocCommand fzf-preview.QuickFix<CR>

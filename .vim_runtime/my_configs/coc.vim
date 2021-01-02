@@ -1,5 +1,12 @@
 "You can also use g:coc_global_extensions in vimrc to make coc.nvim install extensions for you when extension not found.
-let g:coc_global_extensions=['coc-rust-analyzer', 'coc-json', 'coc-vimlsp', 'coc-fzf-preview']
+let g:coc_global_extensions=
+  \ [
+    \ 'coc-rust-analyzer',
+    \ 'coc-json',
+    \ 'coc-vimlsp',
+    \ 'coc-fzf-preview',
+    \ 'coc-go',
+  \ ]
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -60,38 +67,18 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+noremap [coc-p] <Nop>
+nmap <Leader>c [coc-p]
+xmap <Leader>c [coc-p]
 
-" Show commands.
-nnoremap <silent><nowait> <space>cc  :<C-u>CocList commands<cr>
-
-" Show all diagnostics.
-nnoremap <silent><nowait> <space>ca  :<C-u>CocList diagnostics<cr>
-
-" Manage extensions.
-nnoremap <silent><nowait> <space>ce  :<C-u>CocList extensions<cr>
-
-" Find symbol of current document.
-nnoremap <silent><nowait> <space>co  :<C-u>CocList outline<cr>
-
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>cs  :<C-u>CocList -I symbols<cr>
-
-" Do default action for next item.
-nnoremap <silent><nowait> <space>cj  :<C-u>CocNext<CR>
-
-" Do default action for previous item.
-nnoremap <silent><nowait> <space>ck  :<C-u>CocPrev<CR>
-
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>cp  :<C-u>CocListResume<CR>
-
-" Show action (quick fix)
-nnoremap <silent><nowait> <space>cf  :<C-u>CocAction<cr>
-
-" Symbol renaming.
-nmap <space>cr <Plug>(coc-rename)
+nmap     <silent> [coc-p]r  <Plug>(coc-rename)
+nnoremap <silent> [coc-p]a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> [coc-p]c  :<C-u>CocList commands<cr>
+nnoremap <silent> [coc-p]e  :<C-u>CocList extensions<cr>
+nnoremap <silent> [coc-p]f  :<C-u>CocAction<cr>
+nnoremap <silent> [coc-p]j  :<C-u>CocNext<CR>
+nnoremap <silent> [coc-p]k  :<C-u>CocPrev<CR>
+nnoremap <silent> [coc-p]o  :<C-u>CocList outline<cr>
+nnoremap <silent> [coc-p]p  :<C-u>CocListResume<CR>
+nnoremap <silent> [coc-p]s  :<C-u>CocList -I symbols<cr>
 

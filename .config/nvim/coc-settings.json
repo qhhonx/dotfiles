@@ -1,6 +1,7 @@
 {
     "coc.preferences.extensionUpdateCheck": "daily" ,
     "coc.preferences.formatOnSaveFiletypes": ["rust"],
+    "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "rust-analyzer.inlayHints.refreshOnInsertMode": true,
     "rust-analyzer.inlayHints.enable": false,
     "rust-analyzer.inlayHints.typeHints": false,
