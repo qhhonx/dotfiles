@@ -1,4 +1,4 @@
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+let NERDTreeIgnore = ['\.pyc$', '__pycache__', '.git']
 let g:NERDTreeWinPos = "left"
 let g:NERDTreeWinSize=48
 let g:NERDTreeShowHidden=1
