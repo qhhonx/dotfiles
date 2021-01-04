@@ -1,11 +1,7 @@
-let g:airline_theme='one'
+let g:nord_uniform_status_lines = 1
+set background=dark
+colorscheme nord
 
-set background=dark " for the dark version
-" set background=light " for the light version
-let g:one_allow_italics = 1 " I love italic for comments
-colorscheme one
-
-"Credit joshdick
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)

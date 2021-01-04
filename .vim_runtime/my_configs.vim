@@ -10,18 +10,19 @@ call pathogen#helptags()
 """"""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'joshdick/onedark.vim'
+" Plug 'rakr/vim-one'
 Plug 'PhilRunninger/nerdtree-visual-selection'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
+Plug 'arcticicestudio/nord-vim'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
-Plug 'rakr/vim-one'
 Plug 'sheerun/vim-polyglot'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
