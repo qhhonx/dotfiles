@@ -78,7 +78,7 @@ nmap     <nowait> <silent> [coc-p]r  <Plug>(coc-rename)
 xmap     <nowait> <silent> [coc-p]c  <Plug>(coc-codeaction-selected)
 
 nnoremap <nowait> <silent> [coc-p]a  :<C-u>CocList diagnostics<cr>
-nnoremap <nowait> <silent> [coc-p]d  :<C-u>CocList commands<cr>
+nnoremap <nowait> <silent> [coc-p]m  :<C-u>CocList commands<cr>
 nnoremap <nowait> <silent> [coc-p]e  :<C-u>CocList extensions<cr>
 nnoremap <nowait> <silent> [coc-p]j  :<C-u>CocNext<CR>
 nnoremap <nowait> <silent> [coc-p]k  :<C-u>CocPrev<CR>
