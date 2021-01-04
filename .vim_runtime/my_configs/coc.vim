@@ -10,7 +10,7 @@ let g:coc_global_extensions=
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=400
+set updatetime=300
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
@@ -71,14 +71,18 @@ noremap [coc-p] <Nop>
 nmap <Leader>c [coc-p]
 xmap <Leader>c [coc-p]
 
-nmap     <silent> [coc-p]r  <Plug>(coc-rename)
-nnoremap <silent> [coc-p]a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> [coc-p]c  :<C-u>CocList commands<cr>
-nnoremap <silent> [coc-p]e  :<C-u>CocList extensions<cr>
-nnoremap <silent> [coc-p]f  :<C-u>CocAction<cr>
-nnoremap <silent> [coc-p]j  :<C-u>CocNext<CR>
-nnoremap <silent> [coc-p]k  :<C-u>CocPrev<CR>
-nnoremap <silent> [coc-p]o  :<C-u>CocList outline<cr>
-nnoremap <silent> [coc-p]p  :<C-u>CocListResume<CR>
-nnoremap <silent> [coc-p]s  :<C-u>CocList -I symbols<cr>
+nmap     <nowait> <silent> [coc-p]c  <Plug>(coc-codeaction-selected)j
+nmap     <nowait> <silent> [coc-p]f  <Plug>(coc-fix-current)
+nmap     <nowait> <silent> [coc-p]l  <Plug>(coc-codeaction-line)
+nmap     <nowait> <silent> [coc-p]r  <Plug>(coc-rename)
+xmap     <nowait> <silent> [coc-p]c  <Plug>(coc-codeaction-selected)
+
+nnoremap <nowait> <silent> [coc-p]a  :<C-u>CocList diagnostics<cr>
+nnoremap <nowait> <silent> [coc-p]d  :<C-u>CocList commands<cr>
+nnoremap <nowait> <silent> [coc-p]e  :<C-u>CocList extensions<cr>
+nnoremap <nowait> <silent> [coc-p]j  :<C-u>CocNext<CR>
+nnoremap <nowait> <silent> [coc-p]k  :<C-u>CocPrev<CR>
+nnoremap <nowait> <silent> [coc-p]o  :<C-u>CocList outline<cr>
+nnoremap <nowait> <silent> [coc-p]p  :<C-u>CocListResume<CR>
+nnoremap <nowait> <silent> [coc-p]s  :<C-u>CocList -I symbols<cr>
 
