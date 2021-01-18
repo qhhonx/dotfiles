@@ -12,3 +12,7 @@ set PATH $GOPATH/bin $PATH
 
 # theme
 set fish_pager_color_progress cyan
+
+# homebrew M1
+[ -f /opt/homebrew/bin/brew ]; and set PATH /opt/homebrew/bin $PATH
+[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish

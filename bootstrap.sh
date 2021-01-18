@@ -41,7 +41,7 @@ function brew_cask_install() {
         for tool in "$@"; do
             if is_darwin && [ "$tool" != "$formula" ] && ! $(which brew) list --cask | grep $tool >/dev/null; then
                 printf "\nInstalling $tool ...\n"
-                HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) cask install $tool
+                HOMEBREW_NO_AUTO_UPDATE=1 $(which brew) install --cask $tool
             fi
         done
     done
