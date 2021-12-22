@@ -79,7 +79,7 @@ function set_default_shell() {
 
 function setup_terminal() {
     brew_cask_install \
-        alfred appgrid clean-me istat-menus visual-studio-code alacritty \
+        alfred appgrid clean-me istat-menus visual-studio-code alacritty fork \
         "homebrew/cask-fonts font-inconsolata font-jetbrains-mono font-jetbrains-mono-nerd-font font-inconsolata-nerd-font"
     brew_install fish tmux
     aptget_install fish tmux
@@ -117,7 +117,7 @@ function setup_dotfiles() {
 # cli
 
 function setup_cli_tools() {
-    brew_install autojump tldr rg fd fzf tig gh
+    brew_install autojump tldr rg fd fzf tig gh node yarn
 }
 
 # pre_install
@@ -180,21 +180,22 @@ function bootstrap() {
 # https://sookocheff.com/post/bash/parsing-bash-script-arguments-with-shopts/
 while getopts ":fs" opt; do
     case ${opt} in
-        f) # force to bootstrap
-            bootstrap
-            exit 1
-            ;;
-        s) # skip to pre_install/post_instll
-            install
-            exit 1
-            ;;
-        \?) echo "Usage: ./bootstrap.sh [-f] [-s]"
-            exit 0
-            ;;
+    f) # force to bootstrap
+        bootstrap
+        exit 1
+        ;;
+    s) # skip to pre_install/post_instll
+        install
+        exit 1
+        ;;
+    \?)
+        echo "Usage: ./bootstrap.sh [-f] [-s]"
+        exit 0
+        ;;
     esac
 done
 
-shift $((OPTIND -1))
+shift $((OPTIND - 1))
 
 read -p "This may overwrites existing files in your home directory. Are you sure? (y/n) " -n 1
 echo ""
