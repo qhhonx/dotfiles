@@ -17,12 +17,12 @@ function is_darwin() {
 function install_brew() {
     if is_darwin && ! which brew >/dev/null; then
         if [ -f /opt/homebrew/bin/brew ]; then
-	    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+            echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>$HOME/.zprofile
             eval "$(/opt/homebrew/bin/brew shellenv)"
         else
             printf "\nInstalling brew ...\n"
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-            echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+            echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>$HOME/.zprofile
             eval "$(/opt/homebrew/bin/brew shellenv)"
         fi
     fi
@@ -86,7 +86,7 @@ function set_default_shell() {
 
 function setup_terminal() {
     brew_cask_install \
-        alfred appgrid clean-me istat-menus visual-studio-code alacritty fork proxyman \
+        alfred appgrid clean-me istat-menus visual-studio-code alacritty fork proxyman netnewswire db-browser-for-sqlite \
         "homebrew/cask-fonts font-inconsolata font-jetbrains-mono font-jetbrains-mono-nerd-font font-inconsolata-nerd-font"
     brew_install fish tmux node
     aptget_install fish tmux
