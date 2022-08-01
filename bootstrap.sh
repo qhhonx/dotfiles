@@ -86,7 +86,7 @@ function set_default_shell() {
 
 function setup_terminal() {
     brew_cask_install \
-        alfred appgrid clean-me istat-menus visual-studio-code alacritty fork proxyman netnewswire db-browser-for-sqlite \
+        alfred appgrid clean-me istat-menus visual-studio-code alacritty fork proxyman netnewswire db-browser-for-sqlite omnidisksweeper \
         "homebrew/cask-fonts font-inconsolata font-jetbrains-mono font-jetbrains-mono-nerd-font font-inconsolata-nerd-font"
     brew_install fish tmux node
     aptget_install fish tmux
