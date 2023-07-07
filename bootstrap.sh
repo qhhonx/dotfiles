@@ -85,9 +85,9 @@ function set_default_shell() {
 }
 
 function setup_terminal() {
-    brew_cask_install \
-        alfred appgrid clean-me istat-menus visual-studio-code alacritty fork proxyman netnewswire db-browser-for-sqlite omnidisksweeper \
-        "homebrew/cask-fonts font-inconsolata font-jetbrains-mono font-jetbrains-mono-nerd-font font-inconsolata-nerd-font"
+    cat exclude/brew_cask_list.txt | while read line; do
+        brew_cask_install "$line"
+    done
     brew_install fish tmux node
     aptget_install fish tmux
     set_default_shell fish
@@ -127,6 +127,15 @@ function setup_cli_tools() {
     brew_install autojump tldr rg fd fzf tig gh node yarn rbenv
 }
 
+# config
+
+function setup_config() {
+    if is_darwin; then
+        defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+        defaults write -g KeyRepeat -int 2         # normal minimum is 2 (30 ms)
+    fi
+}
+
 # pre_install
 
 function pre_install() {
@@ -135,6 +144,7 @@ function pre_install() {
         setup_terminal
         setup_dotfiles
         setup_cli_tools
+        setup_config
     )
     for setup in "${setups[@]}"; do
         $(expr $setup)
@@ -143,7 +153,7 @@ function pre_install() {
 
 # install dotfiles
 
-EXCLUDE_PATTERNS=(".git/" ".DS_Store" "bootstrap.sh" "README.md" "LICENSE")
+EXCLUDE_PATTERNS=(".git/" ".DS_Store" "bootstrap.sh" "README.md" "LICENSE", "exclude/")
 
 function update_dotfiles() {
     printf "\nUpdating .dotfiles in $DIR ...\n"

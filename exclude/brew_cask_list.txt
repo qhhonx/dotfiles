@@ -1,0 +1,14 @@
+alacritty
+appgrid
+clean-me
+db-browser-for-sqlite
+fork
+github
+istat-menus
+netnewswire
+omnidisksweeper
+proxyman
+raycast
+thor
+visual-studio-code
+homebrew/cask-fonts font-inconsolata font-jetbrains-mono font-jetbrains-mono-nerd-font font-inconsolata-nerd-font
