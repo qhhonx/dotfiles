@@ -4,7 +4,7 @@ clean-me
 db-browser-for-sqlite
 fork
 github
-homebrew/cask-fonts font-inconsolata font-jetbrains-mono font-jetbrains-mono-nerd-font font-inconsolata-nerd-font
+homebrew/cask-fonts font-inconsolata font-jetbrains-mono font-monaspace
 istat-menus
 netnewswire
 obsidian
