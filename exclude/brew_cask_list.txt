@@ -1,11 +1,13 @@
-alacritty
 appgrid
 clean-me
 db-browser-for-sqlite
+font-inconsolata
+font-jetbrains-mono
+font-maple-mono
 fork
 github
-homebrew/cask-fonts font-inconsolata font-jetbrains-mono font-monaspace font-maple-mono
-istat-menus
+google-chrome
+istat-menus@6
 netnewswire
 obsidian
 omnidisksweeper
@@ -13,4 +15,5 @@ proxyman
 raycast
 thor
 visual-studio-code
+warp
 xcodes
